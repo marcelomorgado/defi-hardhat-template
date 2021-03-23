@@ -1,0 +1,6 @@
+{
+  "solidity.compileUsingRemoteVersion": "v0.7.6+commit.7338295f",
+  "files.associations": {
+    ".env.*": "dotenv"
+  }
+}
