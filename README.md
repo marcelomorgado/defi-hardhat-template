@@ -1,3 +1,5 @@
+# defi-hardhat-template
+
 References:  
 https://github.com/austintgriffith/scaffold-eth/tree/master/packages/hardhat  
 https://github.com/Synthetixio/synthetix
