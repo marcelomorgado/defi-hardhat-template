@@ -2,8 +2,6 @@ import { expect } from "chai";
 import { deployments, ethers } from "hardhat";
 import { Counter } from "../typechain";
 
-console.log(`ALCHEMY = ${process.env.ALCHEMY_API_KEY}`);
-
 describe("Counter", () => {
   let counter: Counter;
 

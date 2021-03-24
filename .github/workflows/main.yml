@@ -44,8 +44,6 @@ jobs:
 
       - run: npm run lint
 
-      - run: npm test
-
       - name: Run Tests
         run: npm test
         env:
