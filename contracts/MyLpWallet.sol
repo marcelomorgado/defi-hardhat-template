@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
 import "hardhat/console.sol";
 
-contract MyWallet is Ownable {
+contract MyLpWallet is Ownable {
     function deposit(address tokenAddress, uint256 amount) public onlyOwner {
         IERC20(tokenAddress).transferFrom(msg.sender, address(this), amount);
     }

@@ -4,12 +4,9 @@ import { DeployResult } from "hardhat-deploy/dist/types";
 
 const { DEPLOY_LOG } = process.env;
 
-const ContractName = "MyWallet";
+const ContractName = "MyLpWallet";
 
-const func: DeployFunction = async ({
-  getNamedAccounts,
-  deployments,
-}: HardhatRuntimeEnvironment) => {
+const func: DeployFunction = async ({ getNamedAccounts, deployments }: HardhatRuntimeEnvironment) => {
   const { deploy } = deployments;
   const { deployer } = await getNamedAccounts();
 

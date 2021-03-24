@@ -6,10 +6,7 @@ const { DEPLOY_LOG } = process.env;
 
 const ContractName = "Counter";
 
-const func: DeployFunction = async ({
-  getNamedAccounts,
-  deployments,
-}: HardhatRuntimeEnvironment) => {
+const func: DeployFunction = async ({ getNamedAccounts, deployments }: HardhatRuntimeEnvironment) => {
   const { deploy } = deployments;
   const { deployer } = await getNamedAccounts();
 
