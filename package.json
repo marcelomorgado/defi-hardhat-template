@@ -1,7 +1,7 @@
 {
   "name": "defi-hardhat-template",
   "version": "1.0.0",
-  "description": "Forkable DeFi hardhat project",
+  "description": "Template for DeFi hardhat projects",
   "main": "index.js",
   "scripts": {
     "clean": "rimraf typechain artifacts cache",
