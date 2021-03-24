@@ -1,23 +1,21 @@
 import { HardhatRuntimeEnvironment } from "hardhat/types";
 import { DeployFunction } from "hardhat-deploy/types";
-import { DeployResult } from "hardhat-deploy/dist/types";
-
-const { DEPLOY_LOG } = process.env;
 
 const ContractName = "MyLpWallet";
 
 const func: DeployFunction = async ({ getNamedAccounts, deployments }: HardhatRuntimeEnvironment) => {
-  const { deploy } = deployments;
+  const { deploy, get } = deployments;
   const { deployer } = await getNamedAccounts();
 
-  const { address }: DeployResult = await deploy(ContractName, {
-    from: deployer,
-    args: [],
-    log: DEPLOY_LOG === "true",
-  });
+  const MyToken = await get("MyToken");
 
-  console.log(`${ContractName} deployed to ${address}`);
+  await deploy(ContractName, {
+    from: deployer,
+    args: [MyToken.address],
+    log: true,
+  });
 };
 
 export default func;
 func.tags = [ContractName];
+func.dependencies = ["MyToken"];

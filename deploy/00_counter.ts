@@ -1,8 +1,5 @@
 import { HardhatRuntimeEnvironment } from "hardhat/types";
 import { DeployFunction } from "hardhat-deploy/types";
-import { DeployResult } from "hardhat-deploy/dist/types";
-
-const { DEPLOY_LOG } = process.env;
 
 const ContractName = "Counter";
 
@@ -10,13 +7,11 @@ const func: DeployFunction = async ({ getNamedAccounts, deployments }: HardhatRu
   const { deploy } = deployments;
   const { deployer } = await getNamedAccounts();
 
-  const { address }: DeployResult = await deploy(ContractName, {
+  await deploy(ContractName, {
     from: deployer,
     args: [],
-    log: DEPLOY_LOG === "true",
+    log: true,
   });
-
-  console.log(`${ContractName} deployed to ${address}`);
 };
 
 export default func;
