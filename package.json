@@ -14,8 +14,7 @@
     "test": "hardhat test --logs",
     "goerli:prepare": "cp .env.goerli .env",
     "goerli:deploy": "npm run goerli:prepare && hardhat deploy",
-    "goerli:verify": "npm run goerli:prepare && hardhat etherscan-verify --solc-input",
-    "goerli:export": "npm run goerli:prepare && hardhat export --export exports/goerli.json"
+    "goerli:verify": "npm run goerli:prepare && hardhat etherscan-verify --solc-input"
   },
   "author": "Marcelo Morgado <cmarcelom@gmail.com>",
   "license": "MIT",
