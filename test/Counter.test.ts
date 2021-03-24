@@ -6,10 +6,7 @@ describe("Counter", () => {
   let counter: Counter;
 
   beforeEach(async () => {
-    await deployments.fixture(["Counter"]);
-
-    // Note: ether.getCountract() is a better way to do that but it's failing
-    const Counter = await deployments.get("Counter");
+    const { Counter } = await deployments.fixture(["Counter"]);
     counter = <Counter>await ethers.getContractAt("Counter", Counter.address);
 
     const initialCount = await counter.getCount();

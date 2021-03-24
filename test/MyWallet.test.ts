@@ -8,14 +8,9 @@ describe("MyWallet", () => {
   let myToken: MyToken;
 
   beforeEach(async () => {
-    await deployments.fixture(["MyToken", "MyWallet"]);
+    const { MyToken, MyWallet } = await deployments.fixture(["MyToken", "MyWallet"]);
 
-    // Note: ether.getCountract() is a better way to do that but it's failing
-    const MyToken = await deployments.get("MyToken");
     myToken = <MyToken>await ethers.getContractAt("MyToken", MyToken.address);
-
-    // Note: ether.getCountract() is a better way to do that but it's failing
-    const MyWallet = await deployments.get("MyWallet");
     myWallet = <MyWallet>await ethers.getContractAt("MyWallet", MyWallet.address);
 
     await myToken.mint(parseEther("1000"));
