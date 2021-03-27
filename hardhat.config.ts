@@ -2,7 +2,7 @@ import dotenv from "dotenv";
 import { HardhatUserConfig } from "hardhat/types";
 import { removeConsoleLog } from "hardhat-preprocessor";
 import "hardhat-deploy";
-import "hardhat-deploy-ethers";
+//import "hardhat-deploy-ethers";
 import "hardhat-gas-reporter";
 import "@typechain/hardhat";
 import "@nomiclabs/hardhat-waffle";
@@ -90,7 +90,7 @@ const config: HardhatUserConfig = {
     apiKey: ETHERSCAN_API_KEY,
   },
   typechain: {
-    outDir: "typechain",
+    outDir: "typechain/hardhat",
     target: "ethers-v5",
   },
 };

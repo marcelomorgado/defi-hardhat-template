@@ -7,10 +7,7 @@ describe("MyToken", () => {
   let myToken: MyToken;
 
   beforeEach(async () => {
-    await deployments.fixture(["MyToken"]);
-
-    // Note: ether.getCountract() is a better way to do that but it's failing
-    const MyToken = await deployments.get("MyToken");
+    const { MyToken } = await deployments.fixture(["MyToken"]);
     myToken = <MyToken>await ethers.getContractAt("MyToken", MyToken.address);
     expect(myToken.address).to.properAddress;
   });
