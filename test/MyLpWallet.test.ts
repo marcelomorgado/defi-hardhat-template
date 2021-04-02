@@ -12,10 +12,7 @@ import {
   IUniswapV2Factory__factory,
 } from "../typechain";
 import erc20 from "@studydefi/money-legos/erc20";
-
-// TODO: Get from money-legos
-const UNISWAP_V2_ROUTER02_ADDRESS = "0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D";
-const UNISWAP_V2_FACTORY_ADDRESS = "0x5C69bEe701ef814a2B6a3EDD4B1652CB9cc5aA6f";
+import { factory, router02 } from "@studydefi/money-legos/uniswapV2";
 
 describe("MyLpWallet", () => {
   let wallet: SignerWithAddress;
@@ -30,8 +27,8 @@ describe("MyLpWallet", () => {
 
     myToken = <MyToken>await ethers.getContractAt("MyToken", MyToken.address);
     myLpWallet = <MyLpWallet>await ethers.getContractAt("MyLpWallet", MyLpWallet.address);
-    uniswapRouter = IUniswapV2Router02__factory.connect(UNISWAP_V2_ROUTER02_ADDRESS, wallet);
-    uniswapFactory = IUniswapV2Factory__factory.connect(UNISWAP_V2_FACTORY_ADDRESS, wallet);
+    uniswapRouter = IUniswapV2Router02__factory.connect(router02.address, wallet);
+    uniswapFactory = IUniswapV2Factory__factory.connect(factory.address, wallet);
 
     await myToken.mint(parseEther("1000"));
     await myToken.approve(myLpWallet.address, ethers.constants.MaxUint256);
