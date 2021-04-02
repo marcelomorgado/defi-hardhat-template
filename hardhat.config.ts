@@ -22,12 +22,6 @@ const config: HardhatUserConfig = {
     deployer: {
       default: 0,
     },
-    alice: {
-      default: 1,
-    },
-    bob: {
-      default: 2,
-    },
   },
   preprocess: {
     eachLine: removeConsoleLog((bre) => bre.network.name !== "hardhat" && bre.network.name !== "localhost"),
