@@ -2,8 +2,6 @@
 
 [![Tests](https://github.com/marcelomorgado/defi-hardhat-template/actions/workflows/main.yml/badge.svg)](https://github.com/marcelomorgado/defi-hardhat-template/actions/workflows/main.yml)
 
-TODO: Coverage badge https://coveralls.io/github/protofire/solhint?branch=master Dependabot badge
-
 A template for DeFi smart contract development
 
 This is a Hardhat template focused on the DeFi smart contracts development. Some conveniences are listed bellow:
