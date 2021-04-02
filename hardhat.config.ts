@@ -13,7 +13,7 @@ import "hardhat-tracer";
 
 dotenv.config();
 
-const { REPORT_GAS, ETHERSCAN_API_KEY, ALCHEMY_API_KEY, DEPLOYER_PRIVATE_KEY } = process.env;
+const { REPORT_GAS, ETHERSCAN_API_KEY, ALCHEMY_API_KEY, DEPLOYER_PRIVATE_KEY, COINMARKETCAP_API_KEY } = process.env;
 
 const accounts = DEPLOYER_PRIVATE_KEY ? [DEPLOYER_PRIVATE_KEY] : undefined;
 
@@ -72,6 +72,7 @@ const config: HardhatUserConfig = {
   gasReporter: {
     enabled: REPORT_GAS == "true",
     currency: "USD",
+    coinmarketcap: COINMARKETCAP_API_KEY,
   },
   etherscan: {
     apiKey: ETHERSCAN_API_KEY,
