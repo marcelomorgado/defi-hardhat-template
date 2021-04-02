@@ -2,7 +2,6 @@ import dotenv from "dotenv";
 import { HardhatUserConfig } from "hardhat/types";
 import { removeConsoleLog } from "hardhat-preprocessor";
 import "hardhat-deploy";
-//import "hardhat-deploy-ethers";
 import "hardhat-gas-reporter";
 import "@typechain/hardhat";
 import "@nomiclabs/hardhat-waffle";
@@ -73,7 +72,7 @@ const config: HardhatUserConfig = {
       url: `https://bsc-dataseed.binance.org`,
       accounts,
     },
-    bsc_testnet: {
+    "bsc-testnet": {
       url: `https://data-seed-prebsc-1-s1.binance.org:8545`,
       accounts,
     },
