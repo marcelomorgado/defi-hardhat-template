@@ -13,7 +13,7 @@ This is a Hardhat project template focused on the DeFi smart contracts developme
 - GitHub action CI setup;
 - Useful npm scripts;
 - Test coverage (`solidity-coverage`);
-- Etherscan verify (for implementation and proxy contracts);
+- Etherscan verify (for implementation and proxy contracts) (TODO);
 
 ## Setup
 
@@ -21,4 +21,4 @@ This is a Hardhat project template focused on the DeFi smart contracts developme
 
 - Test cases with external protocol (Uniswap V2) integration;
 - Deployment scripts;
-- Upgradable contracts;
+- Upgradable contracts (TODO);
