@@ -2,19 +2,23 @@
 
 [![Tests](https://github.com/marcelomorgado/defi-hardhat-template/actions/workflows/main.yml/badge.svg)](https://github.com/marcelomorgado/defi-hardhat-template/actions/workflows/main.yml)
 
-A template for DeFi smart contract development
+This is a Hardhat project template focused on the DeFi smart contracts development.
 
-This is a Hardhat template focused on the DeFi smart contracts development. Some conveniences are listed bellow:
+## Features/plugins
 
-- Tests agains forked mainnet:
-  It's very useful when writing contracts that interacts with other protocols.
+- Lint setup for tests and contracts;
+- Tests agains forked mainnet (It's very useful when writing contracts that interacts with other protocols.);
+- [money-legos](https://github.com/studydefi/money-legos) package that has address and abis of DeFi projects;
+- TypeScript and TypeChain setup;
+- GitHub action CI setup;
+- Useful npm scripts;
+- Test coverage (`solidity-coverage`);
+- Etherscan verify (for implementation and proxy contracts);
 
-- Lint setup
+## Setup
 
-- Plugins
+## Examples
 
-- MoneyLegos
-
-- TypeScript + Typechain
-
-- CI / GitHub actions
+- Test cases with external protocol (Uniswap V2) integration;
+- Deployment scripts;
+- Upgradable contracts;

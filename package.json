@@ -25,10 +25,7 @@
     "goerli:verify": "npm-run-all goerli:prepare verify",
     "bsc:prepare": "cp .env.bsc .env",
     "bsc:deploy": "npm-run-all bsc:prepare deploy",
-    "bsc:verify": "npm-run-all bsc:prepare verify",
-    "bsc-testnet:prepare": "cp .env.bsc-testnet .env",
-    "bsc-testnet:deploy": "npm-run-all bsc-testnet:prepare deploy",
-    "bsc-testnet:verify": "npm-run-all bsc-testnet:prepare verify"
+    "bsc:verify": "npm-run-all bsc:prepare verify"
   },
   "author": "Marcelo Morgado <cmarcelom@gmail.com>",
   "license": "MIT",
