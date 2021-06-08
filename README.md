@@ -17,7 +17,7 @@ cp .env.example .env.<network>
 code .env.<network>
 ```
 
-Note: Where `<network>` is one of the networks configured in `hadhat.config.ts` (By default: `hardhat`, `mainnet`, `goerli` and `bsc`).
+Note: Where `<network>` is one of the networks configured in `hadhat.config.ts` (By default: `hardhat`, `mainnet`, `goerli` or `bsc`).
 
 ## Test
 
@@ -35,8 +35,3 @@ yarn <network>:verify
 ```
 
 Note: Etherscan (or BSCScan) API is required for verification.
-
-## TODO
-
-- Upgradable contracts
-- Etherscan verify (for implementation and proxy contracts);
