@@ -1,6 +1,6 @@
 import { parseEther } from "@ethersproject/units";
 import { expect } from "chai";
-import { deployments, ethers } from "hardhat";
+import hre, { deployments, ethers } from "hardhat";
 import { MyToken } from "../typechain";
 
 describe("MyToken", () => {
@@ -9,6 +9,8 @@ describe("MyToken", () => {
   beforeEach(async () => {
     const { MyToken } = await deployments.fixture(["MyToken"]);
     myToken = <MyToken>await ethers.getContractAt("MyToken", MyToken.address);
+    hre.tracer.nameTags[myToken.address] = "MyToken";
+
     expect(myToken.address).to.properAddress;
   });
 

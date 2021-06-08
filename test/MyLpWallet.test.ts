@@ -1,7 +1,7 @@
 import { parseEther } from "@ethersproject/units";
 import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers";
 import { expect } from "chai";
-import { deployments, ethers } from "hardhat";
+import hre, { deployments, ethers } from "hardhat";
 import {
   MyToken,
   MyLpWallet,
@@ -30,6 +30,12 @@ describe("MyLpWallet", () => {
     uniswapRouter = IUniswapV2Router02__factory.connect(router02.address, wallet);
     uniswapFactory = IUniswapV2Factory__factory.connect(factory.address, wallet);
 
+    hre.tracer.nameTags[wallet.address] = "Wallet";
+    hre.tracer.nameTags[myToken.address] = "MyToken";
+    hre.tracer.nameTags[myLpWallet.address] = "MyLpWallet";
+    hre.tracer.nameTags[uniswapRouter.address] = "UniswapV2Router02";
+    hre.tracer.nameTags[uniswapFactory.address] = "UniswapV2Factory";
+
     await myToken.mint(parseEther("1000"));
     await myToken.approve(myLpWallet.address, ethers.constants.MaxUint256);
   });
@@ -39,6 +45,7 @@ describe("MyLpWallet", () => {
     expect(tx).to.emit(myLpWallet, "LiquidityAdded");
     const pairAddress = await uniswapFactory.getPair(myToken.address, erc20.weth.address);
     const uniswapPair = IUniswapV2Pair__factory.connect(pairAddress, wallet);
+
     expect(await uniswapPair.totalSupply()).eq(
       (await uniswapPair.balanceOf(myLpWallet.address)).add(await uniswapPair.MINIMUM_LIQUIDITY())
     );
