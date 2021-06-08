@@ -4,21 +4,39 @@
 
 This is a Hardhat project template focused on the DeFi smart contracts development.
 
-## Features/plugins
+## Installation
 
-- Lint setup for tests and contracts;
-- Tests agains forked mainnet (It's very useful when writing contracts that interacts with other protocols.);
-- [money-legos](https://github.com/studydefi/money-legos) package that has address and abis of DeFi projects;
-- TypeScript and TypeChain setup;
-- GitHub action CI setup;
-- Useful npm scripts;
-- Test coverage (`solidity-coverage`);
-- Etherscan verify (for implementation and proxy contracts) (TODO);
+```bash
+yarn
+```
 
 ## Setup
 
-## Examples
+```bash
+cp .env.example .env.<network>
+code .env.<network>
+```
 
-- Test cases with external protocol (Uniswap V2) integration;
-- Deployment scripts;
-- Upgradable contracts (TODO);
+Note: Where `<network>` is one of the networks configured in `hadhat.config.ts` (By default: `hardhat`, `mainnet`, `goerli` and `bsc`).
+
+## Test
+
+```bash
+yarn test
+```
+
+Note: By default the tests will run against a forked ethereum mainnet.
+
+## Deploy & Verify
+
+```bash
+yarn <network>:deploy
+yarn <network>:verify
+```
+
+Note: Etherscan (or BSCScan) API is required for verification.
+
+## TODO
+
+- Upgradable contracts
+- Etherscan verify (for implementation and proxy contracts);
