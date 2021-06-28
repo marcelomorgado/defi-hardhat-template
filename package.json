@@ -47,7 +47,7 @@
     "ethereum-waffle": "3.3.0",
     "ethers": "5.2.0",
     "hardhat": "2.1.2",
-    "hardhat-deploy": "0.7.9",
+    "hardhat-deploy": "0.8.9",
     "hardhat-gas-reporter": "1.0.4",
     "hardhat-preprocessor": "0.1.4",
     "hardhat-spdx-license-identifier": "2.0.3",
