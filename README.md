@@ -41,4 +41,4 @@ yarn <network>:deploy
 yarn <network>:verify
 ```
 
-Note: Etherscan (or BSCScan) API is required for verification.
+Note: Etherscan (or BSCScan) API KEY is required for verification.
