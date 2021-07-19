@@ -1,6 +1,6 @@
 // SPDX-License-Identifier: MIT
 
-pragma solidity 0.7.6;
+pragma solidity 0.8.4;
 
 import "@openzeppelin/contracts/token/ERC20/IERC20.sol";
 import "@openzeppelin/contracts/access/Ownable.sol";
@@ -23,18 +23,12 @@ contract MyLpWallet is Ownable {
         myToken.approve(address(uniswapRouterV2), myTokenAmount);
 
         // Add liquidity
-        (, , uint256 lpTokens) =
-            uniswapRouterV2.addLiquidityETH{value: msg.value}(
-                address(myToken),
-                myTokenAmount,
-                0,
-                0,
-                address(this),
-                2**256 - 1
-            );
+        (, , uint256 lpTokens) = uniswapRouterV2.addLiquidityETH{
+            value: msg.value
+        }(address(myToken), myTokenAmount, 0, 0, address(this), 2**256 - 1);
 
         // Return remaining amounts
-        msg.sender.transfer(address(this).balance);
+        payable(msg.sender).transfer(address(this).balance);
         myToken.transfer(msg.sender, myToken.balanceOf(address(this)));
 
         assert(myToken.balanceOf(address(this)) == 0);
