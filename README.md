@@ -7,7 +7,7 @@ This is a Hardhat project template focused on the DeFi smart contracts developme
 ## :floppy_disk: Installation
 
 ```bash
-yarn
+npm i
 ```
 
 ## :electric_plug: Setup
@@ -23,13 +23,13 @@ Note: Where `<network>` is one of the networks configured in `hadhat.config.ts` 
 
 ### Typechain
 
-The `hardhat` will generates `typechain` code for contracts under `contracts/` folder. You can also have `typechain` code for external contracts (for instance, tests another DeFi protocols), you only need to put their ABIs inside of the `typechain/abi` and run `yarn compile`.
+The `hardhat` will generates `typechain` code for contracts under `contracts/` folder. You can also have `typechain` code for external contracts (for instance, tests another DeFi protocols), you only need to put their ABIs inside of the `typechain/abi` and run `npm run compile`.
 
 ## :toolbox: Test
 
 ```bash
-yarn compile
-yarn test
+npm run compile
+npm test
 ```
 
 Note: By default the tests will run against a forked Ethereum mainnet.
@@ -37,8 +37,8 @@ Note: By default the tests will run against a forked Ethereum mainnet.
 ## :chains: Deploy & Verify
 
 ```bash
-yarn <network>:deploy
-yarn <network>:verify
+npm run <network>:deploy
+npm run <network>:verify
 ```
 
 Note: Etherscan (or BSCScan) API KEY is required for verification.
