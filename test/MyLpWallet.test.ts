@@ -1,7 +1,7 @@
 import { parseEther } from "@ethersproject/units";
 import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers";
 import { expect } from "chai";
-import hre, { deployments, ethers } from "hardhat";
+import { deployments, ethers } from "hardhat";
 import {
   MyToken,
   MyLpWallet,
@@ -10,6 +10,8 @@ import {
   IUniswapV2Router02__factory,
   IUniswapV2Factory,
   IUniswapV2Factory__factory,
+  MyToken__factory,
+  MyLpWallet__factory,
 } from "../typechain";
 import erc20 from "@studydefi/money-legos/erc20";
 import { factory, router02 } from "@studydefi/money-legos/uniswapV2";
@@ -25,16 +27,10 @@ describe("MyLpWallet", () => {
     [wallet] = await ethers.getSigners();
     const { MyToken, MyLpWallet } = await deployments.fixture(["MyToken", "MyLpWallet"]);
 
-    myToken = <MyToken>await ethers.getContractAt("MyToken", MyToken.address);
-    myLpWallet = <MyLpWallet>await ethers.getContractAt("MyLpWallet", MyLpWallet.address);
+    myToken = MyToken__factory.connect(MyToken.address, wallet);
+    myLpWallet = MyLpWallet__factory.connect(MyLpWallet.address, wallet);
     uniswapRouter = IUniswapV2Router02__factory.connect(router02.address, wallet);
     uniswapFactory = IUniswapV2Factory__factory.connect(factory.address, wallet);
-
-    hre.tracer.nameTags[wallet.address] = "Wallet";
-    hre.tracer.nameTags[myToken.address] = "MyToken";
-    hre.tracer.nameTags[myLpWallet.address] = "MyLpWallet";
-    hre.tracer.nameTags[uniswapRouter.address] = "UniswapV2Router02";
-    hre.tracer.nameTags[uniswapFactory.address] = "UniswapV2Factory";
 
     await myToken.mint(parseEther("1000"));
     await myToken.approve(myLpWallet.address, ethers.constants.MaxUint256);

@@ -14,7 +14,7 @@
     "prettier": "prettier --list-different 'contracts/**/*.sol'",
     "lint": "npm run prettier && npm run solhint",
     "pretest": "npm run compile",
-    "test": "hardhat test --logs",
+    "test": "hardhat test",
     "verify": "hardhat etherscan-verify --solc-input",
     "deploy": "hardhat deploy",
     "mainnet:prepare": "cp .env.mainnet .env",
