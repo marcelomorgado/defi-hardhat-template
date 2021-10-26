@@ -1,0 +1,9 @@
+{
+  "mainnet": {
+    "UniswapV2Factory": "0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f",
+    "UniswapV2Pair": "0x5c69bee701ef814a2b6a3edd4b1652cb9cc5aa6f",
+    "CrVVSP": "0x1A122348B73B58eA39F822A89e6ec67950c2bBD0",
+    "CreamComtroller": "0x3d5BC3c8d13dcB8bF317092d84783c2697AE9258",
+    "CreamLens": "0xd400e22dcA840CC7E342DF1d9945684bBd587659"
+  }
+}

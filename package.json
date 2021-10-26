@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "clean": "rimraf typechain/hardhat typechain/extra artifacts cache",
-    "typechain:extra": "typechain --target=ethers-v5 --out-dir typechain/extra './typechain/abi/*.json'",
-    "precompile": "npm run typechain:extra",
+    "typechain:extra": "typechain --target=ethers-v5 --out-dir typechain/extra './eth-sdk/abis/mainnet/*.json'",
+    "precompile": "eth-sdk && npm run typechain:extra",
     "compile": "hardhat compile",
     "coverage": "hardhat coverage",
     "solhint": "hardhat check",
@@ -30,6 +30,8 @@
   "author": "Marcelo Morgado <cmarcelom@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "@dethcrypto/eth-sdk": "^0.1.6",
+    "@dethcrypto/eth-sdk-client": "^0.1.4",
     "@nomiclabs/hardhat-ethers": "^2.0.2",
     "@nomiclabs/hardhat-etherscan": "^2.1.6",
     "@nomiclabs/hardhat-solhint": "^2.0.0",
