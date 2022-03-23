@@ -44,7 +44,7 @@
     "@uniswap/v2-periphery": "^1.1.0-beta.0",
     "chai": "^4.3.6",
     "dotenv": "^16.0.0",
-    "ethereum-waffle": "^3.4.0",
+    "ethereum-waffle": "^3.4.4",
     "ethers": "^5.5.4",
     "hardhat": "^2.9.0",
     "hardhat-deploy": "^0.10.5",
