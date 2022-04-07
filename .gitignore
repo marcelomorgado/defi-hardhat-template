@@ -1,8 +1,7 @@
 node_modules/
 cache/
 artifacts/
-typechain/hardhat
-typechain/extra
+typechain
 coverage/
 coverage.json
 .env*

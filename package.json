@@ -4,9 +4,7 @@
   "description": "Template for DeFi hardhat projects",
   "main": "index.js",
   "scripts": {
-    "clean": "rimraf typechain/hardhat typechain/extra artifacts cache",
-    "typechain:extra": "typechain --target=ethers-v5 --out-dir typechain/extra './typechain/abi/*.json'",
-    "precompile": "npm run typechain:extra",
+    "precompile": "hardhat typechain",
     "compile": "hardhat compile",
     "coverage": "hardhat coverage",
     "solhint": "hardhat check",
@@ -22,10 +20,7 @@
     "mainnet:verify": "npm-run-all mainnet:prepare verify",
     "goerli:prepare": "cp .env.goerli .env",
     "goerli:deploy": "npm-run-all goerli:prepare deploy",
-    "goerli:verify": "npm-run-all goerli:prepare verify",
-    "bsc:prepare": "cp .env.bsc .env",
-    "bsc:deploy": "npm-run-all bsc:prepare deploy",
-    "bsc:verify": "npm-run-all bsc:prepare verify"
+    "goerli:verify": "npm-run-all goerli:prepare verify"
   },
   "author": "Marcelo Morgado <cmarcelom@gmail.com>",
   "license": "MIT",

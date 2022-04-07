@@ -13,9 +13,7 @@ import "hardhat-tracer";
 
 dotenv.config();
 
-const { REPORT_GAS, ETHERSCAN_API_KEY, ALCHEMY_API_KEY, DEPLOYER_PRIVATE_KEY, COINMARKETCAP_API_KEY } = process.env;
-
-const accounts = DEPLOYER_PRIVATE_KEY ? [DEPLOYER_PRIVATE_KEY] : undefined;
+const accounts = process.env.MNEMONIC ? { mnemonic: process.env.MNEMONIC } : undefined;
 
 const config: HardhatUserConfig = {
   namedAccounts: {
@@ -24,7 +22,7 @@ const config: HardhatUserConfig = {
     },
   },
   preprocess: {
-    eachLine: removeConsoleLog((bre) => bre.network.name !== "hardhat" && bre.network.name !== "localhost"),
+    eachLine: removeConsoleLog(({ network: { name } }) => !["hardhat", "localhost"].includes(name)),
   },
   solidity: {
     version: "0.8.4",
@@ -38,20 +36,16 @@ const config: HardhatUserConfig = {
   networks: {
     hardhat: {
       forking: {
-        url: `https://eth-mainnet.alchemyapi.io/v2/${ALCHEMY_API_KEY}`,
-        blockNumber: 11543930,
+        url: process.env.PROVIDER_URL!,
+        blockNumber: Number(process.env.BLOCK_NUMBER),
       },
     },
     mainnet: {
-      url: `https://eth-mainnet.alchemyapi.io/v2/${ALCHEMY_API_KEY}`,
+      url: process.env.PROVIDER_URL!,
       accounts,
     },
     goerli: {
-      url: `https://eth-goerli.alchemyapi.io/v2/${ALCHEMY_API_KEY}`,
-      accounts,
-    },
-    bsc: {
-      url: `https://bsc-dataseed.binance.org`,
+      url: process.env.PROVIDER_URL!,
       accounts,
     },
   },
@@ -60,15 +54,15 @@ const config: HardhatUserConfig = {
     runOnCompile: true,
   },
   gasReporter: {
-    enabled: REPORT_GAS == "true",
+    enabled: process.env.REPORT_GAS == "true",
     currency: "USD",
-    coinmarketcap: COINMARKETCAP_API_KEY,
+    coinmarketcap: process.env.COINMARKETCAP_API_KEY,
   },
   etherscan: {
-    apiKey: ETHERSCAN_API_KEY,
+    apiKey: process.env.ETHERSCAN_API_KEY,
   },
   typechain: {
-    outDir: "typechain/hardhat",
+    outDir: "typechain",
     target: "ethers-v5",
   },
 };
