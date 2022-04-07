@@ -1,15 +1,16 @@
-import dotenv from "dotenv";
 import { HardhatUserConfig } from "hardhat/types";
-import { removeConsoleLog } from "hardhat-preprocessor";
-import "hardhat-deploy";
-import "hardhat-gas-reporter";
-import "@typechain/hardhat";
 import "@nomiclabs/hardhat-waffle";
-import "hardhat-spdx-license-identifier";
-import "solidity-coverage";
 import "@nomiclabs/hardhat-etherscan";
 import "@nomiclabs/hardhat-solhint";
+import "@typechain/hardhat";
+import "solidity-coverage";
+import "hardhat-deploy";
+import "hardhat-gas-reporter";
+import "hardhat-contract-sizer";
+import "hardhat-spdx-license-identifier";
 import "hardhat-tracer";
+import dotenv from "dotenv";
+import { removeConsoleLog } from "hardhat-preprocessor";
 
 dotenv.config();
 
@@ -62,6 +63,11 @@ const config: HardhatUserConfig = {
   typechain: {
     outDir: "typechain",
     target: "ethers-v5",
+  },
+  contractSizer: {
+    alphaSort: true,
+    runOnCompile: process.env.RUN_CONTRACT_SIZER === "true",
+    disambiguatePaths: false,
   },
 };
 
