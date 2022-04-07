@@ -1,26 +1,21 @@
 name: Tests
-
 on:
-  push:
-    branches: [master]
   pull_request:
     branches: [master]
 
 jobs:
-  build:
+  test:
     runs-on: ubuntu-latest
-
-    strategy:
-      matrix:
-        node-version: [12.x]
-
     steps:
-      - uses: actions/checkout@v2
-
-      - name: Use Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v1
+      - uses: actions/checkout@v2.3.1
         with:
-          node-version: ${{ matrix.node-version }}
+          submodules: true
+      - run: cat "${GITHUB_WORKSPACE}/.github/env.properties" >> $GITHUB_ENV
+
+      - name: Use Node.js
+        uses: actions/setup-node@v2
+        with:
+          node-version-file: ".nvmrc"
 
       - name: Dependencies cache
         uses: actions/cache@v2
@@ -36,15 +31,9 @@ jobs:
           path: "./cache"
           key: ${{ runner.os }}-build-${{ hashFiles('./contracts/**') }}
 
-      - name: Install dependencies
+      - name: Run npm install
         if: steps.npm-cache.outputs.cache-hit != 'true'
-        run: npm ci --force
+        run: npm i
 
-      - run: npm run compile
-
-      #- run: npm run lint
-
-      - name: Run Tests
-        run: npm test
-        env:
-          ALCHEMY_API_KEY: ${{ secrets.ALCHEMY_API_KEY }}
+      - name: Run npm test
+        run: npm t
