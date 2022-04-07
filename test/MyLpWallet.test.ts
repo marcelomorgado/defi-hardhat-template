@@ -10,9 +10,10 @@ import {
   MyToken__factory,
   MyLpWallet__factory,
 } from "../typechain";
-import erc20 from "@studydefi/money-legos/erc20";
-import { factory, router02 } from "@studydefi/money-legos/uniswapV2";
 import { Contract } from "ethers";
+import { Address } from "../helper";
+
+const { UNISWAP_V2_ROUTER02, UNISWAP_V2_FACTORY, WETH } = Address;
 
 describe("MyLpWallet", () => {
   let wallet: SignerWithAddress;
@@ -23,13 +24,13 @@ describe("MyLpWallet", () => {
 
   beforeEach(async () => {
     [wallet] = await ethers.getSigners();
-    const { MyToken, MyLpWallet } = await deployments.fixture(["MyToken", "MyLpWallet"]);
+    const { MyToken, MyLpWallet } = await deployments.fixture();
 
     myToken = MyToken__factory.connect(MyToken.address, wallet);
     myLpWallet = MyLpWallet__factory.connect(MyLpWallet.address, wallet);
-    uniswapRouter = IUniswapV2Router02__factory.connect(router02.address, wallet);
+    uniswapRouter = IUniswapV2Router02__factory.connect(UNISWAP_V2_ROUTER02, wallet);
     uniswapFactory = new ethers.Contract(
-      factory.address,
+      UNISWAP_V2_FACTORY,
       ["function getPair(address,address) view returns (address)"],
       wallet
     );
@@ -41,18 +42,16 @@ describe("MyLpWallet", () => {
   it("should add liquidity", async () => {
     const tx = await myLpWallet.addLiquidity(parseEther("100"), { value: parseEther("10") });
     expect(tx).to.emit(myLpWallet, "LiquidityAdded");
-    const pairAddress = await uniswapFactory.getPair(myToken.address, erc20.weth.address);
+    const pairAddress = await uniswapFactory.getPair(myToken.address, WETH);
     const uniswapPair = new ethers.Contract(
       pairAddress,
       ["function totalSupply() view returns (uint256)", "function balanceOf(address) view returns (uint256)"],
       wallet
     );
+    const balance = await uniswapPair.balanceOf(myLpWallet.address);
 
-    expect(await uniswapPair.totalSupply()).closeTo(
-      await uniswapPair.balanceOf(myLpWallet.address),
-      // @ts-ignore
-      parseEther("0.0001")
-    );
+    // @ts-ignore
+    expect(await uniswapPair.totalSupply()).closeTo(balance, parseEther("0.0001"));
   });
 
   it("should deposit", async () => {

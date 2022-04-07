@@ -8,14 +8,14 @@ import "@uniswap/v2-periphery/contracts/interfaces/IUniswapV2Router02.sol";
 import "hardhat/console.sol";
 
 contract MyLpWallet is Ownable {
-    IUniswapV2Router02 public uniswapRouterV2 =
-        IUniswapV2Router02(0x7a250d5630B4cF539739dF2C5dAcb4c659F2488D);
+    IUniswapV2Router02 public immutable uniswapRouterV2;
     IERC20 public immutable myToken;
 
     event LiquidityAdded(uint256 lpTokens);
 
-    constructor(address _myTokenAddress) {
-        myToken = IERC20(_myTokenAddress);
+    constructor(IERC20 _myTokenAddress, IUniswapV2Router02 _uniswapRouterV2) {
+        myToken = _myTokenAddress;
+        uniswapRouterV2 = _uniswapRouterV2;
     }
 
     function addLiquidity(uint256 myTokenAmount) public payable onlyOwner {
@@ -23,9 +23,14 @@ contract MyLpWallet is Ownable {
         myToken.approve(address(uniswapRouterV2), myTokenAmount);
 
         // Add liquidity
-        (, , uint256 lpTokens) = uniswapRouterV2.addLiquidityETH{
-            value: msg.value
-        }(address(myToken), myTokenAmount, 0, 0, address(this), 2**256 - 1);
+        (, , uint256 lpTokens) = uniswapRouterV2.addLiquidityETH{value: msg.value}(
+            address(myToken),
+            myTokenAmount,
+            0,
+            0,
+            address(this),
+            2**256 - 1
+        );
 
         // Return remaining amounts
         payable(msg.sender).transfer(address(this).balance);

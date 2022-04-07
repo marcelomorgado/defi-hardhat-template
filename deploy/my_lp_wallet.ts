@@ -1,5 +1,6 @@
 import { HardhatRuntimeEnvironment } from "hardhat/types";
 import { DeployFunction } from "hardhat-deploy/types";
+import { Address } from "../helper";
 
 const ContractName = "MyLpWallet";
 
@@ -11,7 +12,7 @@ const func: DeployFunction = async ({ getNamedAccounts, deployments }: HardhatRu
 
   await deploy(ContractName, {
     from: deployer,
-    args: [MyToken.address],
+    args: [MyToken.address, Address.UNISWAP_V2_ROUTER02],
     log: true,
   });
 };
