@@ -17,15 +17,13 @@ const accounts = process.env.MNEMONIC ? { mnemonic: process.env.MNEMONIC } : und
 
 const config: HardhatUserConfig = {
   namedAccounts: {
-    deployer: {
-      default: 0,
-    },
+    deployer: 0,
   },
   preprocess: {
     eachLine: removeConsoleLog(({ network: { name } }) => !["hardhat", "localhost"].includes(name)),
   },
   solidity: {
-    version: "0.8.4",
+    version: "0.8.9",
     settings: {
       optimizer: {
         enabled: true,
