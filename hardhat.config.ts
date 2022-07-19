@@ -10,7 +10,6 @@ import "hardhat-contract-sizer";
 import "hardhat-spdx-license-identifier";
 import "hardhat-tracer";
 import dotenv from "dotenv";
-import { removeConsoleLog } from "hardhat-preprocessor";
 
 dotenv.config();
 
@@ -19,9 +18,6 @@ const accounts = process.env.MNEMONIC ? { mnemonic: process.env.MNEMONIC } : und
 const config: HardhatUserConfig = {
   namedAccounts: {
     deployer: 0,
-  },
-  preprocess: {
-    eachLine: removeConsoleLog(({ network: { name } }) => !["hardhat", "localhost"].includes(name)),
   },
   solidity: {
     version: "0.8.9",
@@ -59,10 +55,6 @@ const config: HardhatUserConfig = {
   },
   etherscan: {
     apiKey: process.env.ETHERSCAN_API_KEY,
-  },
-  typechain: {
-    outDir: "typechain",
-    target: "ethers-v5",
   },
   contractSizer: {
     alphaSort: true,

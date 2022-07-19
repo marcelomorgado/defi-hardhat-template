@@ -9,7 +9,7 @@ import {
   IUniswapV2Router02__factory,
   MyToken__factory,
   MyLpWallet__factory,
-} from "../typechain";
+} from "../typechain-types";
 import { Contract } from "ethers";
 import { Address } from "../helper";
 

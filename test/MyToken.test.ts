@@ -2,7 +2,7 @@ import { parseEther } from "@ethersproject/units";
 import { SignerWithAddress } from "@nomiclabs/hardhat-ethers/signers";
 import { expect } from "chai";
 import { deployments, ethers } from "hardhat";
-import { MyToken, MyToken__factory } from "../typechain";
+import { MyToken, MyToken__factory } from "../typechain-types";
 
 describe("MyToken", () => {
   let wallet: SignerWithAddress;
