@@ -32,7 +32,7 @@ const config: HardhatUserConfig = {
     hardhat: {
       forking: {
         url: process.env.PROVIDER_URL!,
-        blockNumber: Number(process.env.BLOCK_NUMBER),
+        blockNumber: process.env.BLOCK_NUMBER ? Number(process.env.BLOCK_NUMBER) : undefined,
       },
     },
     mainnet: {
