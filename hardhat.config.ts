@@ -1,14 +1,9 @@
 import { HardhatUserConfig } from "hardhat/types";
-import "@nomiclabs/hardhat-waffle";
-import "@nomiclabs/hardhat-etherscan";
+import "@nomicfoundation/hardhat-toolbox";
 import "@nomiclabs/hardhat-solhint";
-import "@typechain/hardhat";
-import "solidity-coverage";
 import "hardhat-deploy";
-import "hardhat-gas-reporter";
 import "hardhat-contract-sizer";
 import "hardhat-spdx-license-identifier";
-import "hardhat-tracer";
 import dotenv from "dotenv";
 
 dotenv.config();

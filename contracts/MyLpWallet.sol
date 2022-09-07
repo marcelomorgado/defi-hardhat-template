@@ -29,7 +29,7 @@ contract MyLpWallet is Ownable {
             0,
             0,
             address(this),
-            2**256 - 1
+            type(uint256).max
         );
 
         // Return remaining amounts
