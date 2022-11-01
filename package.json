@@ -28,7 +28,7 @@
     "@openzeppelin/contracts": "^4.7.3",
     "@types/chai": "^4.3.3",
     "@types/mocha": "^9.1.1",
-    "@types/node": "^18.7.15",
+    "@types/node": "^18.11.9",
     "@uniswap/v2-periphery": "^1.1.0-beta.0",
     "dotenv": "^16.0.2",
     "hardhat-contract-sizer": "^2.6.1",
