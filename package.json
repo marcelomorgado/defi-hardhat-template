@@ -23,7 +23,7 @@
   "author": "Marcelo Morgado <cmarcelom@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "@nomicfoundation/hardhat-toolbox": "2.0.0",
+    "@nomicfoundation/hardhat-toolbox": "2.0.1",
     "@nomiclabs/hardhat-solhint": "2.0.1",
     "@openzeppelin/contracts": "4.8.0",
     "@types/chai": "4.3.4",
