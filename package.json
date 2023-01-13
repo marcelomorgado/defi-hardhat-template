@@ -31,7 +31,7 @@
     "@types/node": "18.11.11",
     "@uniswap/v2-periphery": "1.1.0-beta.0",
     "dotenv": "16.0.3",
-    "hardhat-contract-sizer": "2.6.1",
+    "hardhat-contract-sizer": "2.7.0",
     "hardhat-deploy": "0.11.22",
     "hardhat-spdx-license-identifier": "2.1.0",
     "npm-run-all": "4.1.5",
